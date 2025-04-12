@@ -31,12 +31,14 @@ from mlflow.models import infer_signature
 #mlflow.set_experiment("water-potability-prediction")
 
 import os
+
 dagshub_token = os.getenv("DAGSHUB_TOKEN")
 if not dagshub_token:
     raise EnvironmentError("DAGSHUB_TOKEN environment variable not set.")
 
 os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
 os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
+
 
 dagshub_url = "https://dagshub.com"
 repo_owner = "irfanshaikh911"
