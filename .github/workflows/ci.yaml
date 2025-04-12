@@ -1,15 +1,10 @@
-name: CI pipeline
-
-on: push
-
-jobs: 
-  project-testing: 
+jobs:
+  project-testing:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-      - name: Setup Python 
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
@@ -20,8 +15,10 @@ jobs:
           pip install -r requirements.txt
           pip install dvc
 
-      - name: Run DVC pipeline
+      - name: Set DagsHub token
         env:
-          DAGSHUBS_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
-        run: |
-          dvc repro
+          DAGSHUB_TOKEN: ${{ secrets.DAGSHUB_TOKEN }}
+        run: echo "DAGSHUB_TOKEN is set ✅"
+
+      - name: Run DVC pipeline
+        run: dvc repro
