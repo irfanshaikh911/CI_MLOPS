@@ -91,7 +91,7 @@ class TestModel(unittest.TestCase):
         print(f"Model Performance: Accuracy: {accuracy}, Precision: {precision}, Recall: {recall}, F1 Score: {f1}")
         
         
-        self.assertGreater(accuracy, 0.3, "Model accuracy is below threshold")  
+        self.assertGreater(accuracy, 0.6, "Model accuracy is below threshold")  
         self.assertGreater(precision, 0.3, "Model precision is below threshold")    
         self.assertGreater(recall, 0.3, "Model recall is below threshold")  
         self.assertGreater(f1, 0.3, "Model F1 score is below threshold")
