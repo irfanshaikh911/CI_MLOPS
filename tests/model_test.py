@@ -53,5 +53,52 @@ class TestModel(unittest.TestCase):
         self.assertIsNotNone(loaded_model, "Loaded model is None")
         print(f"Model loaded successfully from run ID: {run_id}, version: {latest_version}, logged model: {logged_model}")
 
+    
+    def test_model_performance(self):
+        """Test if the model performs well"""
+        client = MlflowClient()
+        versions = client.get_latest_versions(model_name, stages=["Staging"])
+        
+        if not versions:
+            self.fail("No model version found in Staging step, skipping performance test")
+        
+        latest_version = versions[0].run_id
+        
+        logged_model = f"runs:/{latest_version}/{model_name}"
+        
+        loaded_model = mlflow.pyfunc.load_model(logged_model)
+        
+        # Load test data
+        test_data_path = "./data/processed/test_processed.csv"
+        if not os.path.exists(test_data_path):
+            self.fail(f"Test data file not found: {test_data_path}")
+        
+        test_data = pd.read_csv(test_data_path)
+        
+        # Assuming the last column is the target variable
+        X_test = test_data.drop(columns=['Potability'])
+        y_test = test_data['Potability']
+        
+        # Make predictions
+        predictions = loaded_model.predict(X_test)
+        
+        # Calculate performance metrics
+        accuracy = accuracy_score(y_test, predictions)
+        precision = precision_score(y_test, predictions, average='binary')
+        recall = recall_score(y_test, predictions, average='binary')
+        f1 = f1_score(y_test, predictions, average='binary')
+        
+        print(f"Model Performance: Accuracy: {accuracy}, Precision: {precision}, Recall: {recall}, F1 Score: {f1}")
+        
+        
+        self.assertGreater(accuracy, 0.3, "Model accuracy is below threshold")  
+        self.assertGreater(precision, 0.3, "Model precision is below threshold")    
+        self.assertGreater(recall, 0.3, "Model recall is below threshold")  
+        self.assertGreater(f1, 0.3, "Model F1 score is below threshold")
+        print("Model performance is satisfactory")
+    
+    
+    
+    
 if __name__ == "__main__":
     unittest.main()
