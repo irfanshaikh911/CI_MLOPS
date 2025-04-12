@@ -3,10 +3,24 @@ from mlflow.tracking import MlflowClient
 import mlflow
 
 import dagshub
-dagshub.init(repo_owner='irfanshaikh911', repo_name='CI_MLOPS', mlflow=True)
+# dagshub.init(repo_owner='irfanshaikh911', repo_name='CI_MLOPS', mlflow=True)
+
+import os
+dagshub_token = os.getenv("DAGSHUB_TOKEN")
+if not dagshub_token:
+    raise EnvironmentError("DAGSHUB_TOKEN environment variable not set.")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
+
+dagshub_url = "https://dagshub.com"
+repo_owner = "irfanshaikh911"
+repo_name = "CI_MLOPS"
+mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
+mlflow.set_experiment("Final_Model")
 # Set the experiment name in MLflow
 
-mlflow.set_experiment("Final_Model")
+# mlflow.set_experiment("Final_Model")
 
 # Load the run ID and model name from the saved JSON file
 reports_path = "reports/run_info.json"

@@ -24,11 +24,27 @@ from mlflow.models import infer_signature
 # Set the tracking URI for MLflow to log the experiment in DagsHub
 # mlflow.set_tracking_uri("https://dagshub.com/bhattpriyang/mlops_project.mlflow") 
 
-import dagshub
-dagshub.init(repo_owner='irfanshaikh911', repo_name='CI_MLOPS', mlflow=True)
-mlflow.set_experiment("Final_Model")
+# import dagshub
+# dagshub.init(repo_owner='irfanshaikh911', repo_name='CI_MLOPS', mlflow=True)
+# mlflow.set_experiment("Final_Model")
 
 #mlflow.set_experiment("water-potability-prediction")
+
+import os
+dagshub_token = os.getenv("DAGSHUB_TOKEN")
+if not dagshub_token:
+    raise EnvironmentError("DAGSHUB_TOKEN environment variable not set.")
+
+os.environ["MLFLOW_TRACKING_USERNAME"] = dagshub_token
+os.environ["MLFLOW_TRACKING_PASSWORD"] = dagshub_token
+
+dagshub_url = "https://dagshub.com"
+repo_owner = "irfanshaikh911"
+repo_name = "CI_MLOPS"
+mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
+mlflow.set_experiment("Final_Model")
+
+
 
 def load_data(filepath: str) -> pd.DataFrame:
     try:
