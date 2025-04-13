@@ -57,3 +57,4 @@ def predict(water: Water):
         return {"result": "Water is Consumable"}
     else:
         return {"result":"Water is Not Consumable"}
+    

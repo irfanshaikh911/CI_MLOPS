@@ -17,7 +17,7 @@ dagshub_url = "https://dagshub.com"
 repo_owner = "irfanshaikh911"
 repo_name = "CI_MLOPS"
 mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
-mlflow.set_experiment("Next_Model")
+mlflow.set_experiment("Final_Model")
 # Set the experiment name in MLflow
 
 # mlflow.set_experiment("Final_Model")
