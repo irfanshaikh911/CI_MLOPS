@@ -48,7 +48,7 @@ jobs:
       - name: Build Docker Image
         if: ${{ success() }}
         run: |
-          docker build -t irfanshaikh/water_potability_prediction:lateset .
+          docker build -t irfanshaikh/water_potability_prediction:latest .
         
       - name: Push Docker Image
         if: ${{ success() }}
