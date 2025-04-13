@@ -131,7 +131,7 @@ def main():
         test_data_path = "./data/processed/test_processed.csv"
         model_path = "models/model.pkl"
         metrics_path = "reports/metrics.json"
-        model_name = "Best Model"
+        model_name = "Best2 Model"
 
         test_data = load_data(test_data_path)
         X_test, y_test = prepare_data(test_data)
@@ -151,7 +151,7 @@ def main():
 
             signature = infer_signature(X_test,model.predict(X_test))
 
-            mlflow.sklearn.log_model(model,"Best Model",signature=signature)
+            mlflow.sklearn.log_model(model,"Best2 Model",signature=signature)
 
             #Save run ID and model info to JSON File
             run_info = {'run_id': run.info.run_id, 'model_name': "Best Model"}

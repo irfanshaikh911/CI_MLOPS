@@ -14,7 +14,7 @@ repo_owner = "irfanshaikh911"
 repo_name = "CI_MLOPS"
 mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
 
-model_name = 'Best Model'
+model_name = 'Best2 Model'
 
 def promote_model_to_production():
     """Promote the model from Staging to Production"""
