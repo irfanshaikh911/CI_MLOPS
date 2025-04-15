@@ -48,11 +48,11 @@ jobs:
       - name: Build Docker Image
         if: ${{ success() }}
         run: |
-          docker build -t irfanshaikh/water_potability_prediction:latest .
+          docker build -t irfanshaikh911/water_potability_predicition:v1.1 .
         
       - name: Push Docker Image
         if: ${{ success() }}
         run: |
-          docker push irfanshaikh/water_potability_prediction:latest
+          docker push irfanshaikh911/water_potability_predicition:v1.1
 
 
