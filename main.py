@@ -8,6 +8,12 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 from datetime import datetime
 
+from dotenv import load_dotenv
+load_dotenv()
+
+mlflow.set_tracking_uri("https://dagshub.com/<username>/<repo>.mlflow")
+
+
 app = FastAPI(
     title="Water Potability Prediction API",
     description="API for predicting water potability using a trained model.",
