@@ -11,6 +11,12 @@ from datetime import datetime
 from dotenv import load_dotenv
 load_dotenv()
 
+dagshub_url = "https://dagshub.com"
+repo_owner = "irfanshaikh911"
+repo_name = "CI_MLOPS"
+
+mlflow.set_tracking_uri(f"{dagshub_url}/{repo_owner}/{repo_name}.mlflow")
+
 mlflow.set_tracking_uri("https://dagshub.com/<username>/<repo>.mlflow")
 
 
