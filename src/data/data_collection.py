@@ -35,7 +35,7 @@ def save_data(df:pd.DataFrame, file_path:str) -> None:
         raise Exception(f"Error saving data to {file_path}: {e}")
 
 def main():
-    data_filepath = "https://raw.githubusercontent.com/ty-prct-ai-ds/water_exp/refs/heads/main/data/water_potability.csv"
+    data_filepath = "CI_MLOPS\data\water_potability.csv"
     params_filepath = "params.yaml"
     raw_data_path = os.path.join("data", "raw")
     try:

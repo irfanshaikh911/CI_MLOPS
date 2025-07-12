@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: water-potability-api
+    env: python
+    buildCommand: pip install -r req_for_docker/requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 8000
+    envVars:
+      - key: MLFLOW_TRACKING_URI
+        value: https://dagshub.com/irfanshaikh911/CI_MLOPS.mlflow
+    plan: free
