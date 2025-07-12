@@ -5,3 +5,4 @@ mlflow
 scikit-learn
 jinja2
 python-multipart
+python-dotenv
