@@ -44,31 +44,71 @@ model = load_model()
 def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+# @app.post("/api/predict")
+# async def predict(request: Request):
+#     input_data = await request.json()
+    
+#     # Ensure float conversion for all inputs
+#     input_data = {key: float(value) for key, value in input_data.items()}
+    
+#     df = pd.DataFrame([input_data])
+#     prediction = model.predict(df)[0]
+
+#     # Optional: Add probability if model supports it
+#     probability = 0.85  # Replace if your model provides it
+
+#     response = {
+#         "prediction": "Potable" if prediction == 1 else "Not Potable",
+#         "probability": probability,
+#         "model_used": "MLflow Model",
+#         "timestamp": datetime.now().isoformat(),
+#         "feature_importance": [
+#             {"feature": col, "importance": round(1 / df.shape[1], 2)}
+#             for col in df.columns
+#         ]
+#     }
+
+#     return JSONResponse(content=response)
+
+
 @app.post("/api/predict")
 async def predict(request: Request):
-    input_data = await request.json()
-    
-    # Ensure float conversion for all inputs
-    input_data = {key: float(value) for key, value in input_data.items()}
-    
-    df = pd.DataFrame([input_data])
-    prediction = model.predict(df)[0]
+    try:
+        input_data = await request.json()
 
-    # Optional: Add probability if model supports it
-    probability = 0.85  # Replace if your model provides it
+        # Convert inputs to float (validate user data)
+        input_data = {k: float(v) for k, v in input_data.items()}
+        df = pd.DataFrame([input_data])
 
-    response = {
-        "prediction": "Potable" if prediction == 1 else "Not Potable",
-        "probability": probability,
-        "model_used": "MLflow Model",
-        "timestamp": datetime.now().isoformat(),
-        "feature_importance": [
-            {"feature": col, "importance": round(1 / df.shape[1], 2)}
-            for col in df.columns
-        ]
-    }
+        # Predict
+        prediction = model.predict(df)
+        prediction_value = int(prediction[0]) if hasattr(prediction, '__getitem__') else int(prediction)
 
-    return JSONResponse(content=response)
+        # Handle optional probability
+        probability = None
+        if hasattr(model, "predict_proba"):
+            prob = model.predict_proba(df)[0][1]
+            probability = round(float(prob), 4)
+        else:
+            probability = 0.85  # fallback default
+
+        # Construct response
+        response = {
+            "prediction": "Potable" if prediction_value == 1 else "Not Potable",
+            "probability": probability,
+            "model_used": "MLflow Model",
+            "timestamp": datetime.now().isoformat(),
+            "feature_importance": [
+                {"feature": col, "importance": round(1 / df.shape[1], 2)}
+                for col in df.columns
+            ]
+        }
+
+        return JSONResponse(content=response)
+
+    except Exception as e:
+        # Logs the error and returns a 500 with message
+        return JSONResponse(status_code=500, content={"error": str(e)})
 
 
 @app.get("/api/metrics")
