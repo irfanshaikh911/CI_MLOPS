@@ -1,7 +1,7 @@
 fastapi
 uvicorn
 pandas
-mlflow
+mlflow==2.2.2
 scikit-learn
 jinja2
 python-multipart

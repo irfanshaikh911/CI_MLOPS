@@ -2,6 +2,6 @@ fastapi
 uvicorn
 pandas
 pydantic
-mlflow
+mlflow==2.2.2
 streamlit
 python-dotenv
