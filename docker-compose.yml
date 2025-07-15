@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: water-potability-app
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./web:/app/web
+      - ./models:/app/models
+    restart: always
+
+  # OPTIONAL: DVC volume container for future use (e.g., data cache, pipelines)
+  dvc:
+    image: dvcorg/dvc:latest
+    container_name: dvc-service
+    volumes:
+      - ./:/mnt/dvc-project
+    entrypoint: ["tail", "-f", "/dev/null"]  # Keeps the container running
