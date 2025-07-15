@@ -1,13 +1,18 @@
 # 💧 Water Potability Prediction Web App
 
-A beginner-friendly MLOps project that predicts whether water is **potable** (safe to drink) using a trained machine learning model.  
-It includes a full stack:
-- 📊 ML model built with `scikit-learn`
-- ⚡ Backend using `FastAPI`
-- 🖥️ Web UI built with `HTML + CSS + JavaScript`
-- 🐳 Docker for containerization
-- 🚀 Deployed on Render
-- 📦 DVC (optional) for data/model versioning
+A beginner-friendly end-to-end **MLOps** project that predicts whether water is **potable** (safe to drink) using a trained ML model.
+
+---
+
+## 🌟 What's Inside?
+
+- 📊 ML model built with **scikit-learn**
+- ⚡ Backend using **FastAPI**
+- 🖥️ Frontend with **HTML + CSS + JavaScript**
+- 🐳 Dockerized for portability
+- 🚀 Deployed on **Render**
+- 🔁 CI/CD using **GitHub Actions**
+- 📦 Optional **DVC** for versioning
 
 ---
 
@@ -21,49 +26,48 @@ It includes a full stack:
 
 ## ✅ Features
 
-- ✔️ Water quality prediction via 9 input parameters
-- ✔️ Clean responsive UI
-- ✔️ REST API `/api/predict`
-- ✔️ Model served using `joblib`
-- ✔️ Docker support
-- ✔️ Deployed to Render (free tier)
-- ✔️ CI/CD ready (GitHub Actions + DVC optional)
+- ✔️ Predicts potability from 9 water quality parameters
+- ✔️ Clean and responsive web UI
+- ✔️ FastAPI-based `/api/predict` endpoint
+- ✔️ ML model served using `joblib`
+- ✔️ Fully Docker-compatible
+- ✔️ Live on Render (free-tier deployment)
+- ✔️ CI/CD setup using GitHub Actions
+- ✔️ Optional versioning with DVC
 
 ---
 
 ## 🧠 Tech Stack
 
-| Layer       | Technology        |
-|-------------|-------------------|
-| Frontend    | HTML, CSS, JS     |
-| Backend     | FastAPI           |
-| ML Model    | scikit-learn      |
-| Packaging   | Docker            |
-| Deployment  | Render            |
-| CI/CD       | GitHub Actions ⚙️ |
-| Versioning  | DVC (optional)    |
+| Layer       | Technology         |
+|-------------|--------------------|
+| Frontend    | HTML, CSS, JavaScript |
+| Backend     | FastAPI            |
+| ML Model    | scikit-learn       |
+| Container   | Docker             |
+| Deployment  | Render             |
+| CI/CD       | GitHub Actions ⚙️  |
+| Versioning  | DVC (optional)     |
 
 ---
 
 ## 🏗️ Architecture
-+-------------+ +--------------+ +-----------------+
-| | POST | | Loads | |
-| HTML/JS UI +--------->+ FastAPI API +--------->+ joblib Model |
-| | | | | |
-+-------------+ +--------------+ +-----------------+
-  ^                        |
-  |                        | Serves
-  |                        v
-+----------------+ +-----------------+
-| styles.css | | app.js (logic) |
-+----------------+ +-----------------+
 
----
+```text
++--------------+      POST      +-------------+      Load      +---------------+
+|  HTML / JS   +------------->  | FastAPI API +------------->  |  joblib Model |
++--------------+               +-------------+                +---------------+
+       ^                             |                               
+       |        Serves HTML/CSS/JS   |                               
+       |                             v                               
++----------------+        +-------------------+                    
+|  styles.css    |        |  app.js (logic)   |                    
++----------------+        +-------------------+
+```
 
 ## 🚀 Live Demo
 
-> [🌐 Visit App on Render]((https://water-potability-cicd-pipeline.onrender.com/))  ![Uploading Screenshot 2025-07-15 230945.png…]()
-![Uploading Screenshot 2025-07-15 230945.png…]()
+> [🌐 Visit App on Render]((https://water-potability-cicd-pipeline.onrender.com/))[water Potability]()
 
 
 ---
@@ -139,7 +143,7 @@ Special thanks to:
 - [Render](https://render.com/)
 - [Docker](https://www.docker.com/)
 - [DVC](https://dvc.org/)
-- [MLflow](https://mlflow.org/) *(if used)*
+- [MLflow](https://mlflow.org/) *(if used)
 
 ---
 
@@ -148,7 +152,7 @@ Special thanks to:
 Made with ❤️ by **[Irfan Shaikh](https://www.linkedin.com/in/irfan-shaikh911/)**
 
 Feel free to connect or suggest improvements.  
-🔗 GitHub: [@your-github](https://github.com/irfanshaikh911)
+🔗 GitHub: [IrfanShaikh911(https://github.com/irfanshaikh911)
 
 ---
 
