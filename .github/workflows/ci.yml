@@ -1,0 +1,30 @@
+name: MLOps Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run DVC pipeline
+      run: dvc repro
+
+    - name: Run backend tests (optional)
+      run: echo "TODO: Add tests"
+
+    - name: Deploy to Render
+      run: echo "Use Render deploy hook here"

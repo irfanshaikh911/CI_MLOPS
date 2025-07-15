@@ -7,3 +7,7 @@ dvc
 uvicorn
 fastapi[all]
 pydantic
+joblib
+uvicorn
+jinja2
+python-multipart
