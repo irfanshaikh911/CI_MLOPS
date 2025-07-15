@@ -20,9 +20,9 @@ A beginner-friendly end-to-end **MLOps** project that predicts whether water is 
 
 > 🎯 Web UI for water quality prediction
 
-![Landing Page](web/static/preview/landing-page.png)
-
----
+<p align="center">
+  <img src="web/static/preview/landing-page.png" alt="Landing Page" width="600"/>
+</p>
 
 ## ✅ Features
 
@@ -67,7 +67,7 @@ A beginner-friendly end-to-end **MLOps** project that predicts whether water is 
 
 ## 🚀 Live Demo
 
-> [🌐 Visit App on Render]((https://water-potability-cicd-pipeline.onrender.com/))[water Potability]()
+> [🌐 Visit App on Render]((https://water-potability-cicd-pipeline.onrender.com/)) [Water Potability Detection]()
 
 
 ---
@@ -101,36 +101,31 @@ docker run -p 8000:8000 water-api
 ---
 
 ## 📁 Project Structure
+```bash
 water-potability-app/
-├── web/                        # Web-related files
-│   ├── main.py                 # FastAPI app with API routes
+├── web/
+│   ├── main.py                # FastAPI app with API routes
 │   ├── templates/
-│   │   └── index.html          # Frontend HTML page
-│   └── static/                 # Static frontend files
-│       ├── css/                # Stylesheets
-│       ├── js/                 # JavaScript logic
-│       └── preview/            # UI screenshot(s) (optional)
-│
+│   │   └── index.html         # Frontend HTML page
+│   └── static/
+│       ├── css/               # Stylesheets
+│       ├── js/                # JavaScript logic
+│       └── preview/           # UI screenshots (optional)
 ├── models/
-│   └── model.pkl               # Trained ML model (joblib or pickle)
-│
-├── src/                        # ML pipeline components
-│   ├── data_collection.py      # Script to collect or load data
-│   ├── data_prep.py            # Script to clean/preprocess data
-│   ├── datamodel.py            # Pydantic BaseModel for request validation
-│   ├── model_building.py       # Training script
-│   ├── model_eval.py           # Model evaluation script
-│   └── model_reg.py            # Optional: MLflow model registration
-│
-├── dvc.yaml                    # DVC pipeline configuration
-├── params.yaml                 # Parameters used across pipeline
-├── requirements.txt            # Python dependencies
-├── Dockerfile                  # Docker setup for deployment
-└── README.md                   # Project documentation
-
-
-
----
+│   └── model.pkl              # Trained ML model
+├── src/
+│   ├── data_collection.py     # Data loading
+│   ├── data_prep.py           # Data preprocessing
+│   ├── datamodel.py           # Pydantic model for request validation
+│   ├── model_building.py      # Training logic
+│   ├── model_eval.py          # Evaluation metrics
+│   └── model_reg.py           # Optional MLflow model registration
+├── dvc.yaml                   # DVC pipeline configuration
+├── params.yaml                # Parameters for the pipeline
+├── requirements.txt           # Required Python packages
+├── Dockerfile                 # Docker container setup
+└── README.md                  # Project documentation
+```
 
 ## 🙌 Acknowledgements
 
@@ -143,7 +138,7 @@ Special thanks to:
 - [Render](https://render.com/)
 - [Docker](https://www.docker.com/)
 - [DVC](https://dvc.org/)
-- [MLflow](https://mlflow.org/) *(if used)
+- [MLflow](https://mlflow.org/) 
 
 ---
 
@@ -152,10 +147,8 @@ Special thanks to:
 Made with ❤️ by **[Irfan Shaikh](https://www.linkedin.com/in/irfan-shaikh911/)**
 
 Feel free to connect or suggest improvements.  
-🔗 GitHub: [IrfanShaikh911(https://github.com/irfanshaikh911)
+🔗 GitHub: [IrfanShaikh911](https://github.com/irfanshaikh911)
 
 ---
-
-
 
 
