@@ -56,6 +56,16 @@ async def predict(request: Request):
         ]
     })
     
-
+@app.get("/api/metrics")
+async def get_metrics():
+    try:
+        with open("metrics.json", "r") as f:
+            metrics = json.load(f)
+        return {
+            "metrics": metrics,
+            "model": "RandomForest"
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Could not load metrics: {e}")
 
 # Optional: Add /api/metrics if using evaluation
